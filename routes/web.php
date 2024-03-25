@@ -7,6 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InvoicesDetailsController;
 use App\Http\Controllers\InvoiceAttachmentsController;
 use App\Http\Controllers\InvoiceAchiveController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 
 
 Auth::routes(['verify' => true]);
@@ -54,6 +56,8 @@ Route::resource('InvoiceAttachments', InvoiceAttachmentsController::class);
 
 
 
+
+
 Route::get('/Status_show/{id}', [InvoicesController::class, 'show'])->name('Status_show');
 Route::post('/Status_Update/{id}', [InvoicesController::class, 'Status_Update'])->name('Status_Update');
 
@@ -70,3 +74,11 @@ Route::get('/Print_invoice/{id}', [InvoicesController::class, 'Print_invoice']);
 
 
 Route::resource('Archive', InvoiceAchiveController::class);
+
+
+
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
