@@ -10,6 +10,7 @@ use App\Http\Controllers\InvoiceAchiveController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Invoices_Report;
+use App\Http\Controllers\Customers_Report;
 
 
 Auth::routes(['verify' => true]);
@@ -89,3 +90,8 @@ Route::group(['middleware' => ['auth']], function() {
 Route::get('invoices_report', [Invoices_Report::class,'index']);
 
 Route::post('Search_invoices', [Invoices_Report::class,'Search_invoices']);
+
+
+Route::get('customers_report', [Customers_Report::class,'index']);
+
+Route::post('Search_customers', [Customers_Report::class,'Search_customers']);
