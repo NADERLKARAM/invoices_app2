@@ -9,6 +9,7 @@ use App\Http\Controllers\InvoiceAttachmentsController;
 use App\Http\Controllers\InvoiceAchiveController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Invoices_Report;
 
 
 Auth::routes(['verify' => true]);
@@ -82,3 +83,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 });
+
+
+
+Route::get('invoices_report', [Invoices_Report::class,'index']);
+
+Route::post('Search_invoices', [Invoices_Report::class,'Search_invoices']);
